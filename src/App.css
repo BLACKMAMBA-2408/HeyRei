@@ -1,0 +1,41 @@
+/* به‌طور کلی برای مرکز کردن محتوا */
+.App {
+  display: flex;
+  justify-content: center;
+  /* وسط‌چینی افقی */
+  align-items: center;
+  /* وسط‌چینی عمودی */
+  height: 100vh;
+  /* ارتفاع کامل صفحه */
+  text-align: center;
+}
+
+.form,
+.main-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* این باعث میشه که محتوای درون صفحه به صورت عمودی در وسط قرار بگیره */
+  width: 100%;
+  max-width: 400px;
+  /* می‌تونی عرض صفحه رو محدود کنی تا خوب دیده بشه */
+  padding: 20px;
+  box-sizing: border-box;
+  /* برای جلوگیری از اشکال در اندازه‌بندی */
+  border-radius: 15px;
+}
+
+button {
+  margin: 10px 0;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
