@@ -28,9 +28,9 @@ export default function MainApp() {
   }, []);
 
   const greetings = {
-    morning: 'Good Morning Reihane!',
-    afternoon: 'Good Afternoon Reihane!',
-    night: 'Good Night Reihane!',
+    morning: 'Good Morning, Reihane',
+    afternoon: 'Good Afternoon, Reihane',
+    night: 'Good Night, Reihane',
   };
 
   let pressTimer;
@@ -45,7 +45,7 @@ export default function MainApp() {
 
   const handleExitLongPressStart = () => {
     pressTimer = setTimeout(() => {
-      setEasterEgg('Even if you try to leave, my heart stays with you.');
+      setEasterEgg('Even if you try to leave, I will always be there for you no matter what happens between us.');
     }, 3000);
   };
   const handleExitLongPressEnd = () => {
@@ -76,21 +76,102 @@ export default function MainApp() {
     setTimeout(() => window.close(), 3000);
   };
 
+  const isDaytime = timeOfDay === 'morning' || timeOfDay === 'afternoon';
+
   return (
     <div
       className={`main-app ${timeOfDay}`}
       onClick={handleTap}
       onTouchStart={handleSwipe}
     >
+      {/* المان‌های شناور فقط توی صفحه اصلی */}
+      {!showExitAnimation && (
+        <>
+          <div className="particle flower-1"></div>
+          <div className="particle heart-1"></div>
+          <div className={`particle ${isDaytime ? 'sun-1' : 'star-1'}`}></div>
+          <div className="particle leaf-1"></div>
+          <div className="particle flower-2"></div>
+          <div className="particle heart-2"></div>
+          <div className={`particle ${isDaytime ? 'cloud-1' : 'star-2'}`}></div>
+          <div className="particle leaf-2"></div>
+          <div className="particle flower-3"></div>
+          <div className="particle heart-3"></div>
+          <div className={`particle ${isDaytime ? 'sun-2' : 'star-3'}`}></div>
+          <div className="particle leaf-3"></div>
+          <div className="particle flower-4"></div>
+          <div className="particle heart-4"></div>
+          <div className={`particle ${isDaytime ? 'cloud-2' : 'star-4'}`}></div>
+          <div className="particle leaf-4"></div>
+          <div className="particle flower-5"></div>
+          <div className="particle heart-5"></div>
+          <div className={`particle ${isDaytime ? 'sun-3' : 'star-5'}`}></div>
+          <div className="particle leaf-5"></div>
+          {isDaytime && (
+            <>
+              <div className="particle sun-4"></div>
+              <div className="particle sun-5"></div>
+              <div className="particle cloud-3"></div>
+              <div className="particle cloud-4"></div>
+              <div className="particle cloud-5"></div>
+            </>
+          )}
+          {!isDaytime && (
+            <>
+              <div className="particle star-6"></div>
+              <div className="particle star-7"></div>
+              <div className="particle star-8"></div>
+              <div className="particle star-9"></div>
+              <div className="particle star-10"></div>
+            </>
+          )}
+        </>
+      )}
+
       {showExitAnimation ? (
         <div className="exit-animation">
-          <p className="text-2xl">I'll miss you, Reihane.</p>
-          <div className="cat-wave">😺</div>
+          <p className="text-2xl content">I'll miss you, Reihane.</p>
+          <div className="cat-wave">
+            {timeOfDay === 'night' ? (
+              <div className="night-cat">
+                <div className="night-cat-head">
+                  <div className="night-cat-sleep-hat">
+                    <div className="hat-puff"></div>
+                    <div className="night-cat-sleep-hat-base"></div>
+                  </div>
+                  <div className="night-cat-ear left"></div>
+                  <div className="night-cat-ear right"></div>
+                  <div className="night-cat-eyes"></div>
+                  <div className="night-cat-stripes"></div>
+                </div>
+                <div className="night-cat-body">
+                  <div className="night-cat-stripes-body"></div>
+                  <div className="night-cat-tail"></div>
+                  <div className="waving-paw"></div>
+                </div>
+              </div>
+            ) : (
+              <div className={`cat goodbye-cat ${timeOfDay}`}>
+                <div className="cat-head">
+                  <div className="ear left"></div>
+                  <div className="ear right"></div>
+                  <div className="eyes"></div>
+                  <div className="stripes"></div>
+                </div>
+                <div className="cat-body">
+                  <div className="stripes-body"></div>
+                  <div className="tail"></div>
+                  <div className="waving-paw"></div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <>
+          <h2 className="app-title content">HeyRei <span className="heart heart-static"></span></h2>
           <h1
-            className="text-4xl font-bold animate-pulse"
+            className="text-4xl font-bold greeting content"
             onMouseDown={handleLongPressStart}
             onMouseUp={handleLongPressEnd}
             onTouchStart={handleLongPressStart}
@@ -98,17 +179,49 @@ export default function MainApp() {
           >
             {greetings[timeOfDay]}
           </h1>
-          <p className="text-lg">This is your cute and cozy app 💖</p>
-          {easterEgg && <p className="easter-egg">{easterEgg}</p>}
+          <div className="cat-container">
+            {timeOfDay === 'night' ? (
+              <div className="night-cat">
+                <div className="night-cat-head">
+                  <div className="night-cat-sleep-hat">
+                    <div className="hat-puff"></div>
+                    <div className="night-cat-sleep-hat-base"></div>
+                  </div>
+                  <div className="night-cat-ear left"></div>
+                  <div className="night-cat-ear right"></div>
+                  <div className="night-cat-eyes"></div>
+                  <div className="night-cat-stripes"></div>
+                </div>
+                <div className="night-cat-body">
+                  <div className="night-cat-stripes-body"></div>
+                  <div className="night-cat-tail"></div>
+                </div>
+              </div>
+            ) : (
+              <div className={`cat ${timeOfDay}`}>
+                <div className="cat-head">
+                  <div className="ear left"></div>
+                  <div className="ear right"></div>
+                  <div className="eyes"></div>
+                  <div className="stripes"></div>
+                </div>
+                <div className="cat-body">
+                  <div className="stripes-body"></div>
+                  <div className="tail"></div>
+                </div>
+              </div>
+            )}
+          </div>
+          {easterEgg && <p className="easter-egg content">{easterEgg}</p>}
           <button
-            className="btn exit-btn"
+            className="btn come-back-btn content"
             onClick={handleExit}
             onMouseDown={handleExitLongPressStart}
             onMouseUp={handleExitLongPressEnd}
             onTouchStart={handleExitLongPressStart}
             onTouchEnd={handleExitLongPressEnd}
           >
-            Exit
+            Come back soon!
           </button>
         </>
       )}

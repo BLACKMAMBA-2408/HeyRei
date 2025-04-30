@@ -49,8 +49,8 @@
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(255, 102, 178, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .proceed-btn {
@@ -73,14 +73,15 @@
   background-color: #bbb;
 }
 
-.exit-btn {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
+.come-back-btn {
+  background-color: #fff;
+  color: #5C4033;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.exit-btn:hover {
-  background-color: #cc0000;
+.come-back-btn:hover {
+  background-color: #f9f9f9;
 }
 
 .denied {
@@ -96,147 +97,1040 @@
 .main-app {
   min-height: 100vh;
   width: 100%;
-  transition: background 0.5s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* تم‌های انیمیشنی */
 .morning {
-  background: linear-gradient(135deg, #fff5cc, #ffe6f0, #ffd1dc);
-  animation: gradientShift 20s ease infinite;
-}
-
-.morning::before {
-  content: '😺';
-  position: absolute;
-  font-size: 50px;
-  animation: float 10s infinite;
-  top: -10%;
-  left: 10%;
-}
-
-.morning::after {
-  content: '🌸';
-  position: absolute;
-  font-size: 45px;
-  animation: float 12s infinite;
-  top: -20%;
-  right: 15%;
-}
-
-.morning .extra-particle-1 {
-  content: '💕';
-  position: absolute;
-  font-size: 40px;
-  animation: float 11s infinite;
-  top: -15%;
-  left: 50%;
-}
-
-.morning .extra-particle-2 {
-  content: '😸';
-  position: absolute;
-  font-size: 50px;
-  animation: float 13s infinite;
-  top: -25%;
-  left: 30%;
+  background: linear-gradient(135deg, #E6F0FA, #B3DFFA);
 }
 
 .afternoon {
-  background: linear-gradient(135deg, #ffcc99, #fff5cc, #ffe6b3);
-  animation: gradientShift 20s ease infinite;
-}
-
-.afternoon::before {
-  content: '💖';
-  position: absolute;
-  font-size: 45px;
-  animation: float 9s infinite;
-  top: -15%;
-  left: 20%;
-}
-
-.afternoon::after {
-  content: '😸';
-  position: absolute;
-  font-size: 50px;
-  animation: float 11s infinite;
-  top: -25%;
-  right: 10%;
-}
-
-.afternoon .extra-particle-1 {
-  content: '☀️';
-  position: absolute;
-  font-size: 45px;
-  animation: float 10s infinite;
-  top: -20%;
-  left: 60%;
-}
-
-.afternoon .extra-particle-2 {
-  content: '😺';
-  position: absolute;
-  font-size: 50px;
-  animation: float 12s infinite;
-  top: -30%;
-  right: 30%;
+  background: linear-gradient(135deg, #FFF8F0, #FFEFD5);
 }
 
 .night {
-  background: linear-gradient(135deg, #1e3a8a, #4b0082, #2d3748);
-  animation: gradientShift 20s ease infinite;
+  background: linear-gradient(135deg, #2C3E50, #4B6584);
 }
 
-.night::before {
-  content: '✨';
+/* المان‌های شناور */
+.particle {
   position: absolute;
-  font-size: 40px;
-  animation: twinkle 4.5s infinite;
-  top: 10%;
+  z-index: 1;
+}
+
+/* گل */
+.flower-1,
+.flower-2,
+.flower-3,
+.flower-4,
+.flower-5 {
+  width: 30px;
+  height: 30px;
+  background: #FFB6C1;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.flower-1::before,
+.flower-2::before,
+.flower-3::before,
+.flower-4::before,
+.flower-5::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 5px solid #FFB6C1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.flower-1 {
+  top: 5%;
+  left: 10%;
+  animation: float1 8s infinite;
+}
+
+.flower-2 {
+  top: 25%;
+  left: 20%;
+  animation: float2 7s infinite;
+}
+
+.flower-3 {
+  top: 45%;
   left: 15%;
+  animation: float3 9s infinite;
 }
 
-.night::after {
-  content: '🌟';
-  position: absolute;
-  font-size: 40px;
-  animation: twinkle 6s infinite;
-  top: 20%;
-  right: 20%;
+.flower-4 {
+  top: 65%;
+  left: 25%;
+  animation: float4 10s infinite;
 }
 
-.night .extra-particle-1 {
-  content: '😺';
-  position: absolute;
-  font-size: 45px;
-  animation: float 11s infinite;
-  top: -10%;
-  left: 70%;
-}
-
-.night .extra-particle-2 {
-  content: '💫';
-  position: absolute;
-  font-size: 40px;
-  animation: twinkle 5s infinite;
+.flower-5 {
   top: 15%;
+  left: 55%;
+  animation: float5 8s infinite;
+}
+
+/* قلب */
+.heart-1,
+.heart-2,
+.heart-3,
+.heart-4,
+.heart-5,
+.heart-static {
+  width: 20px;
+  height: 20px;
+  background: #FFB6C1;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.heart-1::before,
+.heart-2::before,
+.heart-3::before,
+.heart-4::before,
+.heart-5::before,
+.heart-static::before,
+.heart-1::after,
+.heart-2::after,
+.heart-3::after,
+.heart-4::after,
+.heart-5::after,
+.heart-static::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #FFB6C1;
+  border-radius: 50%;
+}
+
+.heart-1::before,
+.heart-2::before,
+.heart-3::before,
+.heart-4::before,
+.heart-5::before,
+.heart-static::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-1::after,
+.heart-2::after,
+.heart-3::after,
+.heart-4::after,
+.heart-5::after,
+.heart-static::after {
+  top: 0;
+  left: -10px;
+}
+
+.heart-1 {
+  top: 15%;
+  right: 5%;
+  animation: float1 10s infinite;
+}
+
+.heart-2 {
+  top: 35%;
+  right: 15%;
+  animation: float2 11s infinite;
+}
+
+.heart-3 {
+  top: 55%;
+  right: 10%;
+  animation: float3 9s infinite;
+}
+
+.heart-4 {
+  top: 20%;
+  right: 30%;
+  animation: float4 8s infinite;
+}
+
+.heart-5 {
+  top: 75%;
+  right: 15%;
+  animation: float5 10s infinite;
+}
+
+.heart-static {
+  position: relative;
+  margin-left: 5px;
+}
+
+/* ستاره (برای شب) */
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5,
+.star-6,
+.star-7,
+.star-8,
+.star-9,
+.star-10 {
+  width: 20px;
+  height: 20px;
+  background: #FFD700;
+  position: absolute;
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
+}
+
+.star-1 {
+  top: 10%;
   left: 40%;
+  animation: twinkle 3s infinite;
+}
+
+.star-2 {
+  top: 50%;
+  left: 5%;
+  animation: twinkle 4s infinite;
+}
+
+.star-3 {
+  top: 30%;
+  left: 65%;
+  animation: twinkle 3.5s infinite;
+}
+
+.star-4 {
+  top: 70%;
+  left: 35%;
+  animation: twinkle 4.5s infinite;
+}
+
+.star-5 {
+  top: 40%;
+  left: 20%;
+  animation: twinkle 3s infinite;
+}
+
+.star-6 {
+  top: 20%;
+  left: 80%;
+  animation: twinkle 3.2s infinite;
+}
+
+.star-7 {
+  top: 60%;
+  left: 60%;
+  animation: twinkle 4.2s infinite;
+}
+
+.star-8 {
+  top: 80%;
+  left: 45%;
+  animation: twinkle 3.8s infinite;
+}
+
+.star-9 {
+  top: 25%;
+  left: 50%;
+  animation: twinkle 4.1s infinite;
+}
+
+.star-10 {
+  top: 45%;
+  left: 75%;
+  animation: twinkle 3.6s infinite;
+}
+
+/* خورشید (برای روز) */
+.sun-1,
+.sun-2,
+.sun-3,
+.sun-4,
+.sun-5 {
+  width: 25px;
+  height: 25px;
+  background: #FFD700;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.sun-1::before,
+.sun-2::before,
+.sun-3::before,
+.sun-4::before,
+.sun-5::before {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: 3px dashed #FFD700;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.sun-1 {
+  top: 10%;
+  left: 45%;
+  animation: float1 8s infinite;
+}
+
+.sun-2 {
+  top: 30%;
+  left: 70%;
+  animation: float2 9s infinite;
+}
+
+.sun-3 {
+  top: 40%;
+  left: 15%;
+  animation: float3 10s infinite;
+}
+
+.sun-4 {
+  top: 60%;
+  left: 50%;
+  animation: float4 7s infinite;
+}
+
+.sun-5 {
+  top: 20%;
+  left: 80%;
+  animation: float5 11s infinite;
+}
+
+/* ابر (برای روز) */
+.cloud-1,
+.cloud-2,
+.cloud-3,
+.cloud-4,
+.cloud-5 {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  background: #FFFFFF;
+  border-radius: 20px;
+}
+
+.cloud-1::before,
+.cloud-2::before,
+.cloud-3::before,
+.cloud-4::before,
+.cloud-5::before,
+.cloud-1::after,
+.cloud-2::after,
+.cloud-3::after,
+.cloud-4::after,
+.cloud-5::after {
+  content: '';
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.cloud-1::before,
+.cloud-2::before,
+.cloud-3::before,
+.cloud-4::before,
+.cloud-5::before {
+  width: 25px;
+  height: 25px;
+  top: -15px;
+  left: 10px;
+}
+
+.cloud-1::after,
+.cloud-2::after,
+.cloud-3::after,
+.cloud-4::after,
+.cloud-5::after {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  left: 25px;
+}
+
+.cloud-1 {
+  top: 55%;
+  left: 5%;
+  animation: float1 10s infinite;
+}
+
+.cloud-2 {
+  top: 70%;
+  left: 40%;
+  animation: float2 11s infinite;
+}
+
+.cloud-3 {
+  top: 15%;
+  left: 65%;
+  animation: float3 9s infinite;
+}
+
+.cloud-4 {
+  top: 35%;
+  left: 30%;
+  animation: float4 8s infinite;
+}
+
+.cloud-5 {
+  top: 80%;
+  left: 20%;
+  animation: float5 12s infinite;
+}
+
+/* برگ */
+.leaf-1,
+.leaf-2,
+.leaf-3,
+.leaf-4,
+.leaf-5 {
+  width: 30px;
+  height: 15px;
+  background: #90EE90;
+  border-radius: 50% 0 50% 0;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.leaf-1::before,
+.leaf-2::before,
+.leaf-3::before,
+.leaf-4::before,
+.leaf-5::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #228B22;
+  transform: rotate(-45deg);
+  top: 6px;
+  left: 5px;
+}
+
+.leaf-1 {
+  top: 65%;
+  right: 5%;
+  animation: float1 9s infinite;
+}
+
+.leaf-2 {
+  top: 45%;
+  right: 10%;
+  animation: float2 8s infinite;
+}
+
+.leaf-3 {
+  top: 25%;
+  right: 20%;
+  animation: float3 10s infinite;
+}
+
+.leaf-4 {
+  top: 75%;
+  right: 25%;
+  animation: float4 7s infinite;
+}
+
+.leaf-5 {
+  top: 35%;
+  right: 40%;
+  animation: float5 11s infinite;
+}
+
+.app-title {
+  font-size: 24px;
+  color: #5C4033;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.morning .app-title {
+  color: #4682B4;
+  /* Steel Blue برای هماهنگی با تم صبح */
+}
+
+.night .app-title {
+  color: #FFFFFF;
+  /* هماهنگ با greeting توی شب */
+}
+
+.greeting {
+  color: #5C4033;
+  margin-bottom: 20px;
+}
+
+.morning .greeting {
+  color: #4682B4;
+  /* Steel Blue برای هماهنگی با تم صبح */
+}
+
+.night .greeting {
+  color: #FFFFFF;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.cat-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cat {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.cat-head {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #FF8C00;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.morning .cat-head {
+  background: #FFFFFF;
+}
+
+.goodbye-cat .cat-head {
+  background: #E67E22;
+}
+
+.morning.goodbye-cat .cat-head {
+  background: #FFFFFF;
+}
+
+.night.goodbye-cat .cat-head {
+  background: #000000;
+}
+
+.ear {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #FF8C00;
+}
+
+.morning .ear {
+  border-bottom-color: #FFFFFF;
+}
+
+.night .ear {
+  border-bottom-color: #000000;
+}
+
+.goodbye-cat .ear {
+  border-bottom-color: #E67E22;
+}
+
+.morning.goodbye-cat .ear {
+  border-bottom-color: #FFFFFF;
+}
+
+.night.goodbye-cat .ear {
+  border-bottom-color: #000000;
+}
+
+.ear.left {
+  top: -20px;
+  left: 10px;
+  transform: rotate(-30deg);
+}
+
+.ear.right {
+  top: -20px;
+  right: 10px;
+  transform: rotate(30deg);
+}
+
+.eyes::before,
+.eyes::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: #5C4033;
+  top: 40px;
+  border-radius: 2px;
+}
+
+.eyes::before {
+  left: 30px;
+}
+
+.eyes::after {
+  right: 30px;
+}
+
+.stripes::before,
+.stripes::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  background: #D2691E;
+  top: 20px;
+  border-radius: 2px;
+}
+
+.morning .stripes::before,
+.morning .stripes::after {
+  background: #000000;
+}
+
+.night .stripes::before,
+.night .stripes::after {
+  background: #FFFFFF;
+}
+
+.goodbye-cat .stripes::before,
+.goodbye-cat .stripes::after {
+  background: #A0522D;
+}
+
+.morning.goodbye-cat .stripes::before,
+.morning.goodbye-cat .stripes::after {
+  background: #000000;
+}
+
+.night.goodbye-cat .stripes::before,
+.night.goodbye-cat .stripes::after {
+  background: #FFFFFF;
+}
+
+.stripes::before {
+  left: 25px;
+}
+
+.stripes::after {
+  top: 30px;
+  left: 25px;
+}
+
+.cat-body {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: #FF8C00;
+  border-radius: 40%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.morning .cat-body {
+  background: #FFFFFF;
+}
+
+.night .cat-body {
+  background: #000000;
+}
+
+.goodbye-cat .cat-body {
+  background: #E67E22;
+}
+
+.morning.goodbye-cat .cat-body {
+  background: #FFFFFF;
+}
+
+.night.goodbye-cat .cat-body {
+  background: #000000;
+}
+
+.stripes-body::before,
+.stripes-body::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 5px;
+  background: #D2691E;
+  border-radius: 2px;
+}
+
+.morning .stripes-body::before,
+.morning .stripes-body::after {
+  background: #000000;
+}
+
+.night .stripes-body::before,
+.night .stripes-body::after {
+  background: #FFFFFF;
+}
+
+.goodbye-cat .stripes-body::before,
+.goodbye-cat .stripes-body::after {
+  background: #A0522D;
+}
+
+.morning.goodbye-cat .stripes-body::before,
+.morning.goodbye-cat .stripes-body::after {
+  background: #000000;
+}
+
+.night.goodbye-cat .stripes-body::before,
+.night.goodbye-cat .stripes-body::after {
+  background: #FFFFFF;
+}
+
+.stripes-body::before {
+  top: 20px;
+  left: 20px;
+}
+
+.stripes-body::after {
+  top: 30px;
+  left: 20px;
+}
+
+.tail {
+  position: absolute;
+  width: 50px;
+  height: 10px;
+  background: #FF8C00;
+  border-radius: 5px;
+  bottom: 10px;
+  right: -40px;
+  transform: rotate(30deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.morning .tail {
+  background: #FFFFFF;
+}
+
+.night .tail {
+  background: #000000;
+}
+
+.goodbye-cat .tail {
+  background: #E67E22;
+}
+
+.morning.goodbye-cat .tail {
+  background: #FFFFFF;
+}
+
+.night.goodbye-cat .tail {
+  background: #000000;
+}
+
+.waving-paw {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: #E67E22;
+  border-radius: 10px;
+  top: 20px;
+  right: -20px;
+  transform-origin: bottom;
+  animation: wave 1s infinite;
+}
+
+.morning.goodbye-cat .waving-paw {
+  background: #FFFFFF;
+}
+
+.night.goodbye-cat .waving-paw {
+  background: #000000;
+}
+
+.night-cat .waving-paw {
+  background: #000000;
+  /* هماهنگ با گربه شب */
+}
+
+/* گربه شب (با کلاه) */
+.night .cat {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.night .cat-head,
+.night .cat-body,
+.night .ear,
+.night .eyes,
+.night .stripes,
+.night .stripes-body,
+.night .tail,
+.night .sleep-hat,
+.night .sleep-hat-base {
+  display: none;
+  /* مخفی کردن المان‌های جداگانه */
+}
+
+.night-cat {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+/* سر گربه */
+.night-cat-head {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #000000;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* کلاه */
+.night-cat-sleep-hat {
+  position: absolute;
+  top: -40px;
+  /* بالاتر برای قرار گرفتن روی سر */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 70px;
+  background: linear-gradient(135deg, #4D8CFF, #2F5BB7);
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  z-index: 2;
+}
+
+.night-cat-sleep-hat::before,
+.night-cat-sleep-hat::after {
+  content: '';
+  position: absolute;
+  background: #FFD700;
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
+}
+
+.night-cat-sleep-hat::before {
+  width: 8px;
+  height: 8px;
+  top: 20px;
+  left: 5px;
+}
+
+.night-cat-sleep-hat::after {
+  width: 6px;
+  height: 6px;
+  top: 30px;
+  right: 5px;
+}
+
+.night-cat-sleep-hat .hat-puff {
+  position: absolute;
+  top: -15px;
+  /* دقیقاً روی رأس مثلث */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background: #4D8CFF;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.night-cat-sleep-hat .hat-puff::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: #FFD700;
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
+}
+
+.night-cat-sleep-hat-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 10px;
+  background: #2F5BB7;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* گوش‌ها */
+.night-cat-ear {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #000000;
+  z-index: 0;
+}
+
+.night-cat-ear.left {
+  top: -20px;
+  left: 10px;
+  transform: rotate(-30deg);
+}
+
+.night-cat-ear.right {
+  top: -20px;
+  right: 10px;
+  transform: rotate(30deg);
+}
+
+/* چشم‌ها */
+.night-cat-eyes::before,
+.night-cat-eyes::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: #5C4033;
+  top: 40px;
+  /* هماهنگ با بقیه گربه‌ها */
+  border-radius: 2px;
+}
+
+.night-cat-eyes::before {
+  left: 30px;
+}
+
+.night-cat-eyes::after {
+  right: 30px;
+}
+
+/* خطوط روی سر */
+.night-cat-stripes::before,
+.night-cat-stripes::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  background: #FFFFFF;
+  top: 20px;
+  /* هماهنگ با بقیه گربه‌ها */
+  border-radius: 2px;
+}
+
+.night-cat-stripes::before {
+  left: 25px;
+}
+
+.night-cat-stripes::after {
+  top: 30px;
+  /* هماهنگ با بقیه گربه‌ها */
+  left: 25px;
+}
+
+/* بدن گربه */
+.night-cat-body {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: #000000;
+  border-radius: 40%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+/* خطوط روی بدن */
+.night-cat-stripes-body::before,
+.night-cat-stripes-body::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 5px;
+  background: #FFFFFF;
+  border-radius: 2px;
+}
+
+.night-cat-stripes-body::before {
+  top: 20px;
+  left: 20px;
+}
+
+.night-cat-stripes-body::after {
+  top: 30px;
+  left: 20px;
+}
+
+/* دم */
+.night-cat-tail {
+  position: absolute;
+  width: 50px;
+  height: 10px;
+  background: #000000;
+  border-radius: 5px;
+  bottom: 10px;
+  right: -40px;
+  transform: rotate(30deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .easter-egg {
   margin-top: 20px;
   font-size: 18px;
-  color: #ff66b2;
+  color: #FF69B4;
   animation: fadeIn 0.5s;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
 }
 
 .easter-egg:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 10px rgba(255, 102, 178, 0.5));
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
 }
 
 .heart-animation {
@@ -249,18 +1143,45 @@
   z-index: 1000;
 }
 
-.heart-animation::before {
-  content: '💖';
+.heart-animation::before,
+.heart-animation::after {
+  width: 20px;
+  height: 20px;
+  background: #FFB6C1;
   position: absolute;
-  font-size: 45px;
+  transform: rotate(45deg);
+}
+
+.heart-animation::before::before,
+.heart-animation::after::before,
+.heart-animation::before::after,
+.heart-animation::after::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #FFB6C1;
+  border-radius: 50%;
+}
+
+.heart-animation::before::before,
+.heart-animation::after::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-animation::before::after,
+.heart-animation::after::after {
+  top: 0;
+  left: -10px;
+}
+
+.heart-animation::before {
   animation: fall 2s linear;
   left: 30%;
 }
 
 .heart-animation::after {
-  content: '💞';
-  position: absolute;
-  font-size: 45px;
   animation: fall 2.5s linear;
   left: 70%;
 }
@@ -272,39 +1193,93 @@
   justify-content: center;
   min-height: 100vh;
   width: 100%;
-  background: #ffe6f0;
+  background: #FFF8F0;
 }
 
 .cat-wave {
-  font-size: 90px;
-  animation: wave 1s infinite;
-  filter: drop-shadow(0 0 10px rgba(255, 102, 178, 0.5));
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 /* انیمیشن‌ها */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes float {
+@keyframes float1 {
   0% {
     transform: translateY(0) translateX(0);
     opacity: 0.9;
   }
 
   50% {
-    transform: translateY(100vh) translateX(60px);
-    opacity: 0.2;
+    transform: translateY(15px) translateX(5px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(-10px) translateX(10px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float3 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(20px) translateX(-5px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float4 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(-15px) translateX(-10px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float5 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(10px) translateX(15px);
+    opacity: 0.5;
   }
 
   100% {
@@ -327,12 +1302,12 @@
 
 @keyframes fall {
   0% {
-    transform: translateY(-100vh);
+    transform: translateY(-100vh) rotate(45deg);
     opacity: 1;
   }
 
   100% {
-    transform: translateY(100vh);
+    transform: translateY(100vh) rotate(45deg);
     opacity: 0;
   }
 }
@@ -376,7 +1351,23 @@
     font-size: 14px;
   }
 
-  .cat-wave {
-    font-size: 70px;
+  .cat,
+  .night-cat {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cat-head,
+  .night-cat-head {
+    width: 80px;
+    height: 80px;
+  }
+
+  .app-title {
+    font-size: 20px;
+  }
+
+  .greeting {
+    font-size: 28px;
   }
 }
