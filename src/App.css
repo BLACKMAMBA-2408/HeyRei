@@ -1,13 +1,12 @@
-/* به‌طور کلی برای مرکز کردن محتوا */
 .App {
   display: flex;
   justify-content: center;
-  /* وسط‌چینی افقی */
   align-items: center;
-  /* وسط‌چینی عمودی */
-  height: 100vh;
-  /* ارتفاع کامل صفحه */
-  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .form,
@@ -16,26 +15,368 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* این باعث میشه که محتوای درون صفحه به صورت عمودی در وسط قرار بگیره */
   width: 100%;
   max-width: 400px;
-  /* می‌تونی عرض صفحه رو محدود کنی تا خوب دیده بشه */
   padding: 20px;
   box-sizing: border-box;
-  /* برای جلوگیری از اشکال در اندازه‌بندی */
   border-radius: 15px;
+  margin: 0 auto;
 }
 
-button {
-  margin: 10px 0;
+.form {
+  background-color: #ffe6f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
+.input-field {
   margin-bottom: 10px;
   padding: 10px;
   font-size: 16px;
   width: 100%;
   max-width: 300px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ff99cc;
+  background-color: #fff;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255, 102, 178, 0.4);
+}
+
+.proceed-btn {
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+}
+
+.proceed-btn:hover {
+  background-color: #ff3385;
+}
+
+.try-again-btn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+}
+
+.try-again-btn:hover {
+  background-color: #bbb;
+}
+
+.exit-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+}
+
+.exit-btn:hover {
+  background-color: #cc0000;
+}
+
+.denied {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #ff4d4d;
+}
+
+.main-app {
+  min-height: 100vh;
+  width: 100%;
+  transition: background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تم‌های انیمیشنی */
+.morning {
+  background: linear-gradient(135deg, #fff5cc, #ffe6f0, #ffd1dc);
+  animation: gradientShift 20s ease infinite;
+}
+
+.morning::before {
+  content: '😺';
+  position: absolute;
+  font-size: 50px;
+  animation: float 10s infinite;
+  top: -10%;
+  left: 10%;
+}
+
+.morning::after {
+  content: '🌸';
+  position: absolute;
+  font-size: 45px;
+  animation: float 12s infinite;
+  top: -20%;
+  right: 15%;
+}
+
+.morning .extra-particle-1 {
+  content: '💕';
+  position: absolute;
+  font-size: 40px;
+  animation: float 11s infinite;
+  top: -15%;
+  left: 50%;
+}
+
+.morning .extra-particle-2 {
+  content: '😸';
+  position: absolute;
+  font-size: 50px;
+  animation: float 13s infinite;
+  top: -25%;
+  left: 30%;
+}
+
+.afternoon {
+  background: linear-gradient(135deg, #ffcc99, #fff5cc, #ffe6b3);
+  animation: gradientShift 20s ease infinite;
+}
+
+.afternoon::before {
+  content: '💖';
+  position: absolute;
+  font-size: 45px;
+  animation: float 9s infinite;
+  top: -15%;
+  left: 20%;
+}
+
+.afternoon::after {
+  content: '😸';
+  position: absolute;
+  font-size: 50px;
+  animation: float 11s infinite;
+  top: -25%;
+  right: 10%;
+}
+
+.afternoon .extra-particle-1 {
+  content: '☀️';
+  position: absolute;
+  font-size: 45px;
+  animation: float 10s infinite;
+  top: -20%;
+  left: 60%;
+}
+
+.afternoon .extra-particle-2 {
+  content: '😺';
+  position: absolute;
+  font-size: 50px;
+  animation: float 12s infinite;
+  top: -30%;
+  right: 30%;
+}
+
+.night {
+  background: linear-gradient(135deg, #1e3a8a, #4b0082, #2d3748);
+  animation: gradientShift 20s ease infinite;
+}
+
+.night::before {
+  content: '✨';
+  position: absolute;
+  font-size: 40px;
+  animation: twinkle 4.5s infinite;
+  top: 10%;
+  left: 15%;
+}
+
+.night::after {
+  content: '🌟';
+  position: absolute;
+  font-size: 40px;
+  animation: twinkle 6s infinite;
+  top: 20%;
+  right: 20%;
+}
+
+.night .extra-particle-1 {
+  content: '😺';
+  position: absolute;
+  font-size: 45px;
+  animation: float 11s infinite;
+  top: -10%;
+  left: 70%;
+}
+
+.night .extra-particle-2 {
+  content: '💫';
+  position: absolute;
+  font-size: 40px;
+  animation: twinkle 5s infinite;
+  top: 15%;
+  left: 40%;
+}
+
+.easter-egg {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ff66b2;
+  animation: fadeIn 0.5s;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.easter-egg:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255, 102, 178, 0.5));
+}
+
+.heart-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.heart-animation::before {
+  content: '💖';
+  position: absolute;
+  font-size: 45px;
+  animation: fall 2s linear;
+  left: 30%;
+}
+
+.heart-animation::after {
+  content: '💞';
+  position: absolute;
+  font-size: 45px;
+  animation: fall 2.5s linear;
+  left: 70%;
+}
+
+.exit-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #ffe6f0;
+}
+
+.cat-wave {
+  font-size: 90px;
+  animation: wave 1s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 102, 178, 0.5));
+}
+
+/* انیمیشن‌ها */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(100vh) translateX(60px);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .form,
+  .main-app {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .input-field {
+    max-width: 100%;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .cat-wave {
+    font-size: 70px;
+  }
 }
