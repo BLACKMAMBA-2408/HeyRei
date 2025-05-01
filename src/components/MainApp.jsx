@@ -5,6 +5,15 @@ export default function MainApp() {
   const [easterEgg, setEasterEgg] = useState('');
   const [tapCount, setTapCount] = useState(0);
   const [showExitAnimation, setShowExitAnimation] = useState(false);
+  const [farewellMessage, setFarewellMessage] = useState('');
+
+  const farewellMessages = [
+    "I'll miss you, Reihane. Come back soon! 💖",
+    "Goodbye for now, Reihane. I'll be waiting! 😿",
+    "Take care, Reihane. See you soon! 🌸",
+    "Leaving so soon, Reihane? I'll miss your smile! 🥺",
+    "Until we meet again, Reihane. Stay safe! 🌟",
+  ];
 
   useEffect(() => {
     const updateTime = () => {
@@ -28,9 +37,9 @@ export default function MainApp() {
   }, []);
 
   const greetings = {
-    morning: 'Good Morning, Reihane',
-    afternoon: 'Good Afternoon, Reihane',
-    night: 'Good Night, Reihane',
+    morning: 'Rise and Shine! ☀️',
+    afternoon: 'Hello, Sunshine! 🌞',
+    night: 'Sweet Dreams! 🌙',
   };
 
   let pressTimer;
@@ -72,6 +81,8 @@ export default function MainApp() {
   };
 
   const handleExit = () => {
+    const randomMessage = farewellMessages[Math.floor(Math.random() * farewellMessages.length)];
+    setFarewellMessage(randomMessage);
     setShowExitAnimation(true);
     setTimeout(() => window.close(), 3000);
   };
@@ -130,7 +141,7 @@ export default function MainApp() {
 
       {showExitAnimation ? (
         <div className="exit-animation">
-          <p className="text-2xl content">I'll miss you, Reihane.</p>
+          <p className="text-2xl content">{farewellMessage}</p>
           <div className="cat-wave">
             {timeOfDay === 'night' ? (
               <div className="night-cat">
@@ -169,7 +180,9 @@ export default function MainApp() {
         </div>
       ) : (
         <>
-          <h2 className="app-title content">HeyRei <span className="heart heart-static"></span></h2>
+          <h2 className="app-title content">
+            HeyRei <span className="heart-static"></span>
+          </h2>
           <h1
             className="text-4xl font-bold greeting content"
             onMouseDown={handleLongPressStart}

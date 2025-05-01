@@ -21,26 +21,32 @@ export default function NameForm({ onSubmit, onExit }) {
       </p>
       <h2>Please Enter Your Name</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
-      <input
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        className="input-field"
-      />
-      <input
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        className="input-field"
-      />
-      <div>
+      <div className="input-container">
+        <span className="input-icon">👤</span>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="input-field"
+        />
+      </div>
+      <div className="input-container">
+        <span className="input-icon">✍️</span>
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="input-field"
+        />
+      </div>
+      <div className="button-group">
         <button onClick={handleSubmit} className="btn proceed-btn">
-          Proceed
+          Proceed <span className="btn-icon">➡️</span>
         </button>
         <button onClick={onExit} className="btn come-back-btn">
-          Exit
+          Exit <span className="btn-icon">🚪</span>
         </button>
       </div>
     </div>

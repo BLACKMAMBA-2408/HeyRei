@@ -7,9 +7,9 @@ export default function AccessDenied({ onExit }) {
       <p className="error-details">
         If you are the person you claim to be, I'm not meant for you. Stop messing around with other people's stuff. Get a job or something. You have a life.
       </p>
-      <div>
+      <div className="button-group">
         <button onClick={onExit} className="btn come-back-btn">
-          Exit
+          Exit <span className="btn-icon">🚪</span>
         </button>
       </div>
     </div>

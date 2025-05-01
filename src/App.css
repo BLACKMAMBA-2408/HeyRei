@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap');
 
 .App {
   display: flex;
@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Caveat', cursive;
 }
 
 .form,
@@ -44,7 +44,7 @@
 
 /* پیام خوش‌آمدگویی در NameForm */
 .welcome-message {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: #ff66b2;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -53,7 +53,7 @@
 
 /* عنوان‌ها */
 .form h2 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
   color: #5C4033;
   margin-bottom: 20px;
@@ -83,11 +83,15 @@
 .btn {
   border-radius: 12px;
   padding: 12px 25px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   margin: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* افکت شیشه‌ای */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn:hover {
@@ -117,14 +121,14 @@
 }
 
 .come-back-btn {
-  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  background: rgba(255, 255, 955, 0.2);
   color: #5C4033;
-  border: 2px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .come-back-btn:hover {
-  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* استایل خاص برای AccessDenied */
@@ -167,24 +171,26 @@
   margin: 10px 0;
 }
 
-/* بقیه استایل‌ها بدون تغییر */
+/* بقیه استایل‌ها */
 .main-app {
   min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
+  /* افکت نور پس‌زمینه */
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.3);
 }
 
 .morning {
-  background: linear-gradient(135deg, #E6F0FA, #B3DFFA);
+  background: linear-gradient(135deg, #d4e6ff, #a8cfff);
 }
 
 .afternoon {
-  background: linear-gradient(135deg, #FFF8F0, #FFEFD5);
+  background: linear-gradient(135deg, #fff5e6, #ffecd1);
 }
 
 .night {
-  background: linear-gradient(135deg, #2C3E50, #4B6584);
+  background: linear-gradient(135deg, #1a2a3b, #3a506b);
 }
 
 /* المان‌های شناور */
@@ -204,6 +210,7 @@
   background: #FFB6C1;
   border-radius: 50%;
   position: absolute;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .flower-1::before,
@@ -265,6 +272,7 @@
   background: #FFB6C1;
   position: absolute;
   transform: rotate(45deg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .heart-1::before,
@@ -367,6 +375,7 @@
       32% 57%,
       2% 35%,
       39% 35%);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
 .star-1 {
@@ -440,6 +449,7 @@
   background: #FFD700;
   border-radius: 50%;
   position: absolute;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
 .sun-1::before,
@@ -500,6 +510,7 @@
   height: 20px;
   background: #FFFFFF;
   border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cloud-1::before,
@@ -582,6 +593,7 @@
   border-radius: 50% 0 50% 0;
   position: absolute;
   transform: rotate(45deg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .leaf-1::before,
@@ -630,31 +642,30 @@
 }
 
 .app-title {
-  font-size: 24px;
+  font-size: 28px;
   color: #5C4033;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .morning .app-title {
   color: #4682B4;
-  /* Steel Blue برای هماهنگی با تم صبح */
 }
 
 .night .app-title {
   color: #FFFFFF;
-  /* هماهنگ با greeting توی شب */
 }
 
 .greeting {
   color: #5C4033;
   margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .morning .greeting {
   color: #4682B4;
-  /* Steel Blue برای هماهنگی با تم صبح */
 }
 
 .night .greeting {
@@ -672,6 +683,7 @@
   justify-content: center;
   position: relative;
   z-index: 2;
+  animation: slideUp 1s ease-out;
 }
 
 .cat {
@@ -688,7 +700,7 @@
   background: #FF8C00;
   border-radius: 50%;
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -822,7 +834,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 0;
 }
 
@@ -945,7 +957,6 @@
 
 .night-cat .waving-paw {
   background: #000000;
-  /* هماهنگ با گربه شب */
 }
 
 /* گربه شب (با کلاه) */
@@ -966,7 +977,6 @@
 .night .sleep-hat,
 .night .sleep-hat-base {
   display: none;
-  /* مخفی کردن المان‌های جداگانه */
 }
 
 .night-cat {
@@ -984,7 +994,7 @@
   background: #000000;
   border-radius: 50%;
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -992,7 +1002,6 @@
 .night-cat-sleep-hat {
   position: absolute;
   top: -40px;
-  /* بالاتر برای قرار گرفتن روی سر */
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
@@ -1036,7 +1045,6 @@
 .night-cat-sleep-hat .hat-puff {
   position: absolute;
   top: -15px;
-  /* دقیقاً روی رأس مثلث */
   left: 50%;
   transform: translateX(-50%);
   width: 15px;
@@ -1111,7 +1119,6 @@
   height: 2px;
   background: #5C4033;
   top: 40px;
-  /* هماهنگ با بقیه گربه‌ها */
   border-radius: 2px;
 }
 
@@ -1132,7 +1139,6 @@
   height: 5px;
   background: #FFFFFF;
   top: 20px;
-  /* هماهنگ با بقیه گربه‌ها */
   border-radius: 2px;
 }
 
@@ -1142,7 +1148,6 @@
 
 .night-cat-stripes::after {
   top: 30px;
-  /* هماهنگ با بقیه گربه‌ها */
   left: 25px;
 }
 
@@ -1156,7 +1161,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 0;
 }
 
@@ -1196,7 +1201,7 @@
 
 .easter-egg {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
   color: #FF69B4;
   animation: fadeIn 0.5s;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1268,12 +1273,14 @@
   min-height: 100vh;
   width: 100%;
   background: #FFF8F0;
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.3);
 }
 
 .cat-wave {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  animation: slideUp 1s ease-out;
 }
 
 /* انیمیشن‌ها */
@@ -1408,6 +1415,18 @@
   }
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 600px) {
 
   .form,
@@ -1422,7 +1441,7 @@
 
   .btn {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .cat,
@@ -1438,7 +1457,7 @@
   }
 
   .app-title {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .greeting {

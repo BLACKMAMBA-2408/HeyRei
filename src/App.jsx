@@ -18,10 +18,8 @@ function App() {
     const validFirstNames = ['reihane', 'reyhane', 'reihaneh', 'reyhaneh'];
     const validLastName = 'mortazavi';
 
-    // جدا کردن فرست‌نیم و لست‌نیم از ورودی کاربر
     const [inputFirstName, inputLastName] = name.toLowerCase().split(' ');
 
-    // چک کردن اینکه آیا فرست‌نیم و لست‌نیم معتبر هستن
     const isFirstNameValid = validFirstNames.includes(inputFirstName);
     const isLastNameValid = inputLastName === validLastName;
 
