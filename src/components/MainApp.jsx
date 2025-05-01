@@ -52,6 +52,15 @@ export default function MainApp() {
     clearTimeout(pressTimer);
   };
 
+  const handleCatLongPressStart = () => {
+    pressTimer = setTimeout(() => {
+      setEasterEgg('Meow meow! That tickles, Reihane! 😸');
+    }, 2500);
+  };
+  const handleCatLongPressEnd = () => {
+    clearTimeout(pressTimer);
+  };
+
   const handleExitLongPressStart = () => {
     pressTimer = setTimeout(() => {
       setEasterEgg('Even if you try to leave, I will always be there for you no matter what happens between us.');
@@ -141,7 +150,7 @@ export default function MainApp() {
 
       {showExitAnimation ? (
         <div className="exit-animation">
-          <p className="text-2xl content">{farewellMessage}</p>
+          <p className="content text-2xl">{farewellMessage}</p>
           <div className="cat-wave">
             {timeOfDay === 'night' ? (
               <div className="night-cat">
@@ -184,7 +193,7 @@ export default function MainApp() {
             HeyRei <span className="heart-static"></span>
           </h2>
           <h1
-            className="text-4xl font-bold greeting content"
+            className="greeting content text-4xl font-bold"
             onMouseDown={handleLongPressStart}
             onMouseUp={handleLongPressEnd}
             onTouchStart={handleLongPressStart}
@@ -192,7 +201,13 @@ export default function MainApp() {
           >
             {greetings[timeOfDay]}
           </h1>
-          <div className="cat-container">
+          <div
+            className="cat-container"
+            onMouseDown={handleCatLongPressStart}
+            onMouseUp={handleCatLongPressEnd}
+            onTouchStart={handleCatLongPressStart}
+            onTouchEnd={handleCatLongPressEnd}
+          >
             {timeOfDay === 'night' ? (
               <div className="night-cat">
                 <div className="night-cat-head">
@@ -225,9 +240,9 @@ export default function MainApp() {
               </div>
             )}
           </div>
-          {easterEgg && <p className="easter-egg content">{easterEgg}</p>}
+          {easterEgg && <p className="easter-egg content text-pink-500 text-xl">{easterEgg}</p>}
           <button
-            className="btn come-back-btn content"
+            className="btn come-back-btn content hover:scale-105 transition-transform duration-300 bg-pink-200 text-gray-800 rounded-lg px-4 py-2 shadow-md"
             onClick={handleExit}
             onMouseDown={handleExitLongPressStart}
             onMouseUp={handleExitLongPressEnd}
