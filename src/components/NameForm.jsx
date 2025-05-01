@@ -1,40 +1,26 @@
 import React, { useState } from 'react';
-import MainApp from './MainApp';
 
-export default function NameForm() {
+export default function NameForm({ onSubmit, onExit }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [confirmed, setConfirmed] = useState(false);
-  const [accessGranted, setAccessGranted] = useState(null);
+  const [error, setError] = useState('');
 
-  const handleConfirm = () => {
-    if (firstName === 'Reihane' && lastName === 'Mortazavi') {
-      setAccessGranted(true);
-      setConfirmed(true);
-    } else {
-      setAccessGranted(false);
+  const handleSubmit = () => {
+    if (!firstName || !lastName) {
+      setError('Please enter both first and last names.');
+      return;
     }
+    const fullName = `${firstName} ${lastName}`;
+    onSubmit(fullName);
   };
 
-  if (confirmed && accessGranted) return <MainApp />;
-
-  if (accessGranted === false) {
-    return (
-      <div className="denied">
-        <p className="text-red-500 font-semibold">
-          If you are the person you claim to be, I'm not meant for you. Stop messing around with
-          other people's stuff. Get a job or something. You have a life.
-        </p>
-        <button className="exit-btn" onClick={() => window.close()}>
-          Exit
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <div className="form bg-pink-100 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold text-pink-600">Welcome to HeyRei</h2>
+    <div className="form">
+      <p className="welcome-message">
+        Hello there. I'm HeyRei. I was designed by my developer for someone special. Gimmie your first and last name so I can lead you to my world.
+      </p>
+      <h2>Please Enter Your Name</h2>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <input
         type="text"
         placeholder="First Name"
@@ -49,18 +35,12 @@ export default function NameForm() {
         onChange={(e) => setLastName(e.target.value)}
         className="input-field"
       />
-      <div className="flex space-x-4">
-        <button className="btn proceed-btn" onClick={handleConfirm}>
+      <div>
+        <button onClick={handleSubmit} className="btn proceed-btn">
           Proceed
         </button>
-        <button
-          className="btn try-again-btn"
-          onClick={() => {
-            setFirstName('');
-            setLastName('');
-          }}
-        >
-          Try Again
+        <button onClick={onExit} className="btn come-back-btn">
+          Exit
         </button>
       </div>
     </div>
